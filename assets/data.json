@@ -1,8 +1,1 @@
-{
-  "deportes": [
-    { "nombre": "cartas", "precio": "10" },
-    { "nombre": "cartas", "precio": "10" },
-    { "nombre": "pelotas", "precio": "15" },
-    { "nombre": "padel", "precio": "18" }
-  ]
-}
+{"deportes":[{"nombre":"esgrima","precio":"44"},{"nombre":"rugby","precio":"55"},{"nombre":"hockey","precio":"45"},{"nombre":"taekwondo","precio":"33"}]}
