@@ -42,27 +42,28 @@ router.get('/agregar', (req, res) => {
     }
 });
 //Ruta para editar
-router.get("/editar/:nombre", (req, res) => {
-    const name = req.params.nombre;
-    const { nombre } = req.query;
+router.get("/editar", (req, res) => {
+    const { nombre, precio } = req.query;
+
     try {
         // Leer la data actual
         const dataSport = JSON.parse(fs.readFileSync(dataFilePath));
+        let { deportes } = JSON.parse(dataSport);
         // Buscar el deporte por su nombre
-        const deporte = dataSport.deportes.find((item) => item.name === name);
-        if (!deporte) {
-        return res.status(404).send("Deporte no encontrado");
-    }
-    // Editar el deporte
-        deporte.nombre = nombre;
-        deporte.precio = precio;
+        deportes.forEach((s) => {
+            if (s.nombre === nombre) {
+                s.precio = precio;
+            }
+            res.send("Deporte no encontrado");
+        });
         // Escribir la data actualizada
-        fs.writeFileSync(dataFilePath, JSON.stringify(dataSport));
+        fs.writeFileSync(dataFilePath, JSON.stringify({ deportes }));
         res.send("Se ha editado el deporte correctamente");
     } catch (error) {
         res.status(500).send("Error al editar el deporte");
     }
 });
+
 //Ruta para eliminar
 router.get('/eliminar', (req, res) => {
     const { nombre } = req.query;

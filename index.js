@@ -4,7 +4,7 @@ const app = express();
 import path from "path";
 import { fileURLToPath } from "node:url";
 const filePath = fileURLToPath;
-const PORT = process.env.PORT || 3005;
+const PORT = process.env.PORT || 3003;
 
 //Middleware de la ruta
 app.use('/', router);
